@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#Make shell scripts executable
+chmod +x run_parallel.sh
+chmod +x run_serial.sh
+chmod +x run_together.sh
+# Create storage folders
+mkdir logs
+mkdir data
+# Creates virtual environment 'session_env' and activates it
+python3 -m venv session_env
+
+## echo will take the string and put it in the new file activate_env. -e interprets \n as a new line.
+echo -e "#!/bin/bash\nsource session_env/bin/activate" > activate_env
+
+##Makes the activate_env file executable and then executes it to start the python environment.
+chmod +x activate_env
+source ./activate_env
+
+#Install requried packages (just numpy)
+pip install numpy
+pip install datetime
